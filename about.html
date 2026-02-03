@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us - Household HR</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .about-fullscreen {
+      height: 100vh;
+      width: 100%;
+      background: linear-gradient(to right, #6db3f2, #1e69de);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+      text-align: center;
+      transition: all 0.4s ease-in-out;
+    }
+
+    .about-fullscreen h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+    }
+
+    .about-fullscreen p {
+      font-size: 1.2em;
+      line-height: 1.8;
+      max-width: 800px;
+      margin-bottom: 20px;
+    }
+
+    .highlight {
+      color: #ffe600;
+      font-weight: bold;
+    }
+
+    .lang-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 10px 16px;
+      font-size: 1em;
+      background-color: white;
+      color: #1e69de;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      transition: background 0.3s ease;
+    }
+
+    .lang-toggle:hover {
+      background-color: #f0f0f0;
+    }
+
+    .thank-you {
+      margin-top: 30px;
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #ffe600;
+    }
+      .footer {
+      background-color: #1e3a8a;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    } 
+
+    @media (max-width: 768px) {
+      .about-fullscreen h1 {
+        font-size: 2em;
+      }
+
+      .about-fullscreen p {
+        font-size: 1em;
+      }
+
+      .thank-you {
+        font-size: 1.2em;
+      }
+
+      .lang-toggle {
+        font-size: 0.9em;
+        padding: 8px 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <button class="lang-toggle" onclick="toggleLanguage()">मराठी</button>
+
+  <div class="about-fullscreen" id="about-content">
+    <h1 id="heading">About Us</h1>
+    <p id="para1">At <span class="highlight">Help Yourself 🤍</span>, we connect families with trusted and reliable household help. Whether you need a
+      <strong>driver</strong>, <strong>cook</strong>, <strong>cleaner</strong>, <strong>gardener</strong>, or <strong>repair and maintenance service</strong> — we've got you covered.</p>
+    <p id="para2">Our mission is to make daily life easier by offering skilled and verified human resources for every home. 
+      With a growing network of professionals and a passion for service, we bring comfort and peace of mind to households across the city.</p>
+    <p id="para3">We're not just a platform — we're your <span class="highlight">partner in managing home responsibilities</span>.</p>
+    <p class="thank-you" id="thankYou">THANK YOU !!!</p>
+
+    
+  </div>
+    <!-- Footer -->
+  <div class="footer">
+    &copy; 2025 Help Yourself. All rights reserved.
+  </div>
+
+
+  <script>
+    let isMarathi = false;
+
+    function toggleLanguage() {
+      isMarathi = !isMarathi;
+
+      // Change language label
+      document.querySelector('.lang-toggle').textContent = isMarathi ? "English" : "मराठी";
+
+      // Change lang attribute on <html> tag
+      document.documentElement.lang = isMarathi ? 'mr' : 'en';
+
+      if (isMarathi) {
+        document.getElementById("heading").textContent = "आमच्याबद्दल";
+        document.getElementById("para1").innerHTML =
+          `<span class="highlight">Help Yourself 🤍</span> हे एक व्यासपीठ आहे जे तुम्हाला विश्वासार्ह आणि प्रशिक्षित घरगुती मदतनीसांशी जोडते. तुम्हाला <strong>ड्रायव्हर</strong>, <strong>स्वयंपाकी</strong>, <strong>घरकाम करणारी</strong>, <strong>माळी</strong> किंवा <strong>दुरुस्ती आणि देखभाल सेवा</strong> हवी असल्यास — आम्ही तुमच्या सेवेसाठी आहोत.`;
+        document.getElementById("para2").textContent =
+          "आमचे ध्येय म्हणजे तुमचे दैनंदिन जीवन अधिक सोपे करणे — आणि ते आम्ही कौशल्यवान व खात्रीशीर मानवी संसाधने उपलब्ध करून साध्य करतो.";
+        document.getElementById("para3").innerHTML =
+          `आम्ही फक्त सेवा देणारे नाही, तर तुमचे <span class="highlight">घरगुती जबाबदाऱ्यांचे भागीदार</span> आहोत.`;
+        document.getElementById("thankYou").textContent = "धन्यवाद !!!";
+      } else {
+        document.getElementById("heading").textContent = "About Us";
+        document.getElementById("para1").innerHTML =
+          `At <span class="highlight">Help Yourself 🤍</span>, we connect families with trusted and reliable household help. Whether you need a
+          <strong>driver</strong>, <strong>cook</strong>, <strong>cleaner</strong>, <strong>gardener</strong>, or <strong>repair and maintenance service</strong> — we've got you covered.`;
+        document.getElementById("para2").textContent =
+          "Our mission is to make daily life easier by offering skilled and verified human resources for every home. With a growing network of professionals and a passion for service, we bring comfort and peace of mind to households across the city.";
+        document.getElementById("para3").innerHTML =
+          `We're not just a platform — we're your <span class="highlight">partner in managing home responsibilities</span>.`;
+        document.getElementById("thankYou").textContent = "THANK YOU !!!";
+      }
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,122 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  padding-bottom: 50px;
+  color: #333;
+}
+
+a,
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+.main-header {
+  text-align: center;
+  background-color: #2874f0;
+  color: white;
+  padding: 40px 20px;
+}
+
+.main-header h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.main-header p {
+  font-size: 18px;
+  color: #e0e0e0;
+}
+
+.services-section {
+  margin: 40px auto;
+  padding: 0 20px;
+  max-width: 1200px;
+}
+
+.services-section h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #222;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  justify-items: center;
+}
+
+.service-card {
+  width: 100%;
+  max-width: 300px;
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.service-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.service-card-title {
+  padding: 12px 10px 0;
+  font-weight: bold;
+  font-size: 16px;
+  color: #222;
+}
+
+.service-card-box {
+  background-color: white;
+  padding: 10px;
+  font-weight: bold;
+  border-top: 1px solid #ccc;
+  font-size: 16px;
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card-box span {
+  color: green;
+}
+
+.service-card:hover .service-card-box {
+  background-color: #66a6ff;
+  color: white;
+}
+
+h2:focus {
+  outline: none;
+  color: #2563eb;
+  background-color: #ffe600;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.service-card:focus {
+  outline: 3px solid #22c55e;
+  box-shadow: 0 0 12px #22c55e;
+}

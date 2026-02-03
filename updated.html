@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Person List</title>
+</head>
+<body>
+
+<h2>Person Details</h2>
+
+<p>
+    <a href="{% url 'logout' %}">Logout</a>
+</p>
+
+<table border="1" cellpadding="8" cellspacing="0">
+    <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Contact Number</th>
+        <th>Action</th>
+    </tr>
+
+    {% for person in persons %}
+    <tr>
+        <td>{{ person.name }}</td>
+        <td>{{ person.address }}</td>
+        <td>{{ person.contact_number }}</td>
+        <td>
+            <a href="{% url 'edit' person.id %}">Edit</a> |
+            <a href="{% url 'delete' person.id %}"
+               onclick="return confirm('Are you sure you want to delete?')">
+               Delete
+            </a>
+        </td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="4">No data available</td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>

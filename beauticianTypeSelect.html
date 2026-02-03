@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Cooking Service Type</title>
+{% load static %}
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: "Segoe UI", Arial, sans-serif;
+    height:100vh;
+    width:100%;
+    overflow:hidden;
+}
+
+.slider-container{
+    position:relative;
+    width:100%;
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:0;
+}
+
+.slider-wrapper{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    border-radius:0;
+    box-shadow:none;
+}
+
+.slide{
+    position:absolute;
+    width:100%;
+    height:100%;
+    opacity:0;
+    transition:opacity 0.8s ease-in-out;
+    top:0;
+    left:0;
+}
+
+.slide.active{
+    opacity:1;
+}
+
+.slide img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    image-rendering:crisp-edges;
+    -webkit-backface-visibility:hidden;
+    backface-visibility:hidden;
+    -webkit-font-smoothing:antialiased;
+    transform:translateZ(0);
+    will-change:opacity;
+}
+
+.nav-dots{
+    position:absolute;
+    bottom:30px;
+    left:50%;
+    transform:translateX(-50%);
+    display:flex;
+    gap:12px;
+    z-index:10;
+}
+
+.dot{
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.5);
+    cursor:default;
+    transition:all 0.3s ease;
+    border:2px solid rgba(255,255,255,0.8);
+    pointer-events:none;
+}
+
+.dot.active{
+    background:rgba(255,255,255,0.9);
+    transform:scale(1.2);
+}
+
+.container{
+    position:absolute;
+    background:#ffffff;
+    width:360px;
+    padding:30px 25px;
+    border-radius:16px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.25);
+    text-align:center;
+    z-index:5;
+    max-width:90%;
+}
+
+h2{
+    margin-bottom:5px;
+    color:#1e3c72;
+}
+
+.subtitle{
+    font-size:13px;
+    color:#666;
+    margin-bottom:25px;
+}
+
+.option{
+    border:2px solid #2a5298;
+    border-radius:12px;
+    padding:18px;
+    margin-bottom:15px;
+    text-decoration:none;
+    cursor:pointer;
+    transition:all 0.3s ease;
+    display:block;
+}
+
+.option:hover{
+    background:#5a8fd0;
+    transform:translateY(-3px);
+}
+
+.option h3{
+    margin:0;
+    font-size:18px;
+    text-decoration:none;
+    color:#333;
+}
+
+.option p{
+    margin-top:6px;
+    font-size:12px;
+    opacity:0.8;
+    text-decoration:none;
+    color:#666;
+}
+
+.option{
+    color:#333;
+}
+
+.marathi{
+    color:#555;
+    font-weight:500;
+}
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .slider-container{
+        padding:0;
+    }
+
+    .slider-wrapper{
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+    }
+
+    .container{
+        width:85%;
+        max-width:320px;
+        padding:25px 20px;
+    }
+
+    h2{
+        font-size:18px;
+    }
+
+    .option{
+        padding:15px;
+        margin-bottom:12px;
+    }
+
+    .option h3{
+        font-size:16px;
+    }
+
+    .option p{
+        font-size:11px;
+    }
+
+    .nav-dots{
+        bottom:20px;
+    }
+
+    .dot{
+        width:10px;
+        height:10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .slider-container{
+        padding:0;
+    }
+
+    .slider-wrapper{
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+    }
+
+    .container{
+        width:90%;
+        max-width:280px;
+        padding:20px 15px;
+    }
+
+    h2{
+        font-size:16px;
+        margin-bottom:3px;
+    }
+
+    .subtitle{
+        font-size:12px;
+        margin-bottom:20px;
+    }
+
+    .option{
+        padding:12px;
+        margin-bottom:10px;
+        text-decoration:none;
+       
+    }
+
+    .option h3{
+        font-size:14px;
+    }
+
+    .option p{
+        font-size:10px;
+    }
+
+    .nav-dots{
+        bottom:15px;
+        gap:8px;
+    }
+
+    .dot{
+        width:8px;
+        height:8px;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<div class="slider-container">
+    <div class="slider-wrapper">
+        <div class="slide active">
+            <img src="{% static 'beauty11.png' %}" alt="Beautician 1">
+        </div>
+        <div class="slide">
+            <img src="{% static 'beauty2.jpg' %}" alt="Beautician 2">
+        </div>
+        <div class="slide">
+            <img src="{% static 'beauty3.jpg' %}" alt="Beautician 3">
+        </div>
+    </div>
+
+    <div class="nav-dots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+
+    <div class="container">
+        <h2>Select Beautician Type</h2>
+        <div class="subtitle">
+            <span class="marathi">ब्यूटिशियनचा प्रकार निवडा</span>
+        </div>
+
+        <a href="{% url 'regular_cook' %}" class="option">
+            <h3> Makeup Services</h3>
+            <p><span class="marathi">ब्रायडल मेकअप
+
+              /नॉन-ब्रायडल / पार्टी मेकअप</span></p>
+        </a>
+
+        <div class="option">
+            <h3>Beauty Care Services</h3>
+            <p><span class="marathi">वॅक्सिंग /फेशियल /हेअर स्पा /हेअर केअर</span></p>
+
+
+        </div>
+    </div>
+</div>
+
+<script>
+let slideIndex = 0;
+let slideTimer;
+
+function showSlide(n) {
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    
+    if (n >= slides.length) slideIndex = 0;
+    if (n < 0) slideIndex = slides.length - 1;
+    
+    slides.forEach(slide => slide.classList.remove('active'));
+    dots.forEach(dot => dot.classList.remove('active'));
+    
+    slides[slideIndex].classList.add('active');
+    dots[slideIndex].classList.add('active');
+}
+
+function nextSlide() {
+    showSlide(++slideIndex);
+    clearTimeout(slideTimer);
+    slideTimer = setTimeout(nextSlide, 4000);
+}
+
+showSlide(slideIndex);
+slideTimer = setTimeout(nextSlide, 4000);
+</script>
+
+</body>
+</html>

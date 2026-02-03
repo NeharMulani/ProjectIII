@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Feedback - Help Yourself</title>
+  <style>body {
+  margin: 0;
+  padding: 20px;
+  background: linear-gradient(to bottom right, #d0eaff, #a8d8f0);
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  box-sizing: border-box;
+}
+
+.feedback-container {
+  width: 100%;
+  max-width: 420px;
+  background-color: white;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+
+
+  select {
+  background-color: #f9fafb;
+  color: green;
+  font-size: 15px;
+ font-weight: bold;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+
+ 
+
+
+
+    h1 {
+      color: #1e40af;
+      margin-top: 0;
+    }
+
+    label {
+      font-weight: 600;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      font-size: 14px;
+      transition: border-color 0.3s;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: #2563eb;
+      outline: none;
+    }
+
+    button {
+      background-color: #2563eb;
+      color: white;
+      padding: 12px 18px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #1e3a8a;
+    }
+
+    .thank-you {
+      background-color: #d1fae5;
+      color: #065f46;
+      padding: 10px;
+      border: 1px solid #10b981;
+      margin-bottom: 20px;
+      border-radius: 6px;
+      display: none;
+    }
+
+    .lang-btn {
+      float: right;
+      background-color: #4f46e5;
+      margin-top: -10px;
+      margin-bottom: 20px;
+    }
+
+@media (max-width: 400px) {
+  input, select, textarea {
+    font-size: 13px;
+  }
+
+  button, .lang-btn {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+
+      
+    
+  </style>
+</head>
+<body>
+
+  <div class="feedback-container">
+    <button class="lang-btn" onclick="toggleLanguage()">Marathi</button>
+    <h1 id="heading">Give Us Your Feedback 📝</h1>
+    <p id="subheading">Please take a moment to share your experience with us.</p>
+
+    <div class="thank-you" id="thankYouMsg">🙏 Thank you! Your feedback has been received.</div>
+
+    <form id="feedbackForm">
+      <label for="name" id="labelName">Name</label>
+      <input type="text" id="name" required placeholder="Your full name">
+
+      <label for="email" id="labelEmail">Email</label>
+      <input type="email" id="email" required placeholder="you@example.com">
+
+      <label for="rating" id="labelRating">Rate your experience</label>
+      <select id="rating" >
+        <option value="">-- Select Rating --</option>
+        <option value="5">★★★★★ - Excellent</option>
+        <option value="4">★★★★☆ - Good</option>
+        <option value="3">★★★☆☆ - Average</option>
+        <option value="2">★★☆☆☆ - Poor</option>
+        <option value="1">★☆☆☆☆ - Terrible</option>
+      </select>
+
+      <label for="message" id="labelMessage">Your Comments</label>
+      <textarea id="message" rows="4" placeholder="Write your feedback here..."></textarea>
+
+      <button type="submit" id="submitBtn">Submit</button>
+    </form>
+  </div>
+
+<script>
+  let isMarathi = false;
+
+  function toggleLanguage() {
+    isMarathi = !isMarathi;
+
+    document.querySelector('.lang-btn').innerText = isMarathi ? 'English' : 'Marathi';
+
+    document.getElementById('heading').innerText = isMarathi ? 'आपला अभिप्राय द्या 📝' : 'Give Us Your Feedback 📝';
+    document.getElementById('subheading').innerText = isMarathi
+      ? 'कृपया आपला अनुभव आम्हाला सांगा.'
+      : 'Please take a moment to share your experience with us.';
+
+    document.getElementById('labelName').innerText = isMarathi ? 'नाव' : 'Name';
+    document.getElementById('labelEmail').innerText = isMarathi ? 'ई-मेल' : 'Email';
+    document.getElementById('labelRating').innerText = isMarathi ? 'अनुभवाचे मूल्यमापन' : 'Rate your experience';
+    document.getElementById('labelMessage').innerText = isMarathi ? 'आपला अभिप्राय' : 'Your Comments';
+    document.getElementById('submitBtn').innerText = isMarathi ? 'सबमिट करा' : 'Submit';
+    document.getElementById('thankYouMsg').innerText = isMarathi
+      ? '🙏 धन्यवाद! तुमचा अभिप्राय मिळाला आहे.'
+      : '🙏 Thank you! Your feedback has been received.';
+
+    const rating = document.getElementById('rating');
+    rating.options[0].text = isMarathi ? '-- रेटिंग निवडा --' : '-- Select Rating --';
+    rating.options[1].text = isMarathi ? '⭐⭐⭐⭐⭐ - उत्कृष्ट' : '⭐⭐⭐⭐⭐ - Excellent';
+    rating.options[2].text = isMarathi ? '⭐⭐⭐⭐☆ - चांगले' : '⭐⭐⭐⭐☆ - Good';
+    rating.options[3].text = isMarathi ? '⭐⭐⭐☆☆ - सरासरी' : '⭐⭐⭐☆☆ - Average';
+    rating.options[4].text = isMarathi ? '⭐⭐☆☆☆ - खराब' : '⭐⭐☆☆☆ - Poor';
+    rating.options[5].text = isMarathi ? '⭐☆☆☆☆ - अतिशय खराब' : '⭐☆☆☆☆ - Terrible';
+
+    document.getElementById('name').placeholder = isMarathi ? 'तुमचं पूर्ण नाव' : 'Your full name';
+    document.getElementById('email').placeholder = isMarathi ? 'tumhi@example.com' : 'you@example.com';
+    document.getElementById('message').placeholder = isMarathi ? 'इथे लिहा...' : 'Write your feedback here...';
+  }
+
+  // Show thank-you message on submit
+  const form = document.getElementById('feedbackForm');
+  const thankYouMsg = document.getElementById('thankYouMsg');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    thankYouMsg.style.display = 'block';
+    form.reset();
+  });
+</script>
+
+
+</body>
+</html>
+

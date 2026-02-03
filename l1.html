@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f6f7f8;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            padding-top: 50px;
+        }
+
+        .login-box {
+            width: 360px;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 8px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            margin-bottom: 10px;
+        }
+
+        .small-text {
+            color: #555;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 14px;
+            display: block;
+            margin-top: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .login-btn, .logout-btn, .profile-btn {
+            width: 100%;
+            margin-top: 20px;
+            padding: 12px;
+            border: none;
+            background: #1a73e8;
+            color: white;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .logout-btn {
+            background: #d9534f;
+        }
+
+        .profile-btn {
+            background: #28a745;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="login-box">
+
+        {% if user.is_authenticated %}
+            <!-- USER LOGGED IN VIEW -->
+            <h2>Welcome, {{ user.name }}</h2>
+
+            <p>Your Contact: <strong>{{ user.contact }}</strong></p>
+
+            <a href="{% url 'update_profile' %}" class="profile-btn">Update Profile</a>
+
+            <a href="{% url 'logout' %}" class="logout-btn">Logout</a>
+
+        {% else %}
+            <!-- USER NOT LOGGED IN VIEW -->
+            <h2>Log in</h2>
+
+            <p class="small-text">
+                Need an account? <a href="{% url 'signup' %}">Create an account</a>
+            </p>
+
+            <form method="POST" action="{% url 'login' %}">
+                {% csrf_token %}
+
+                <label>Contact Number</label>
+                <input type="text" name="contact" placeholder="Enter contact" required />
+
+                <label>Password</label>
+                <input type="password" name="password" placeholder="Enter password" required />
+
+                <button type="submit" class="login-btn">Log in</button>
+            </form>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+</body>
+</html>

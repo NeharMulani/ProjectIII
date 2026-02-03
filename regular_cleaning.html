@@ -1,0 +1,89 @@
+<h1>cleaning page</h1>
+<p>Welcome to the regular cleaning service page. Here you can find information about our cleaning packages
+
+and book a service that suits your needs.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Cleaning Service Options</title>
+    {% load static %}
+    <style>
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }   
+    body {
+        font-family: "Segoe UI", Arial, sans-serif;
+        height: 100vh;
+        width: 100%;
+        overflow: hidden;
+    }
+    .slider-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+    }
+    .slider-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        border-radius: 0;
+        box-shadow: none;
+    }
+    .slide {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 0.8s ease-in-out;
+        top: 0;
+        left: 0;
+    }
+    .slide.active {
+        opacity:1;
+    }
+    .slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+    @media (max-width: 600px) {
+        .slider-container {
+            flex-direction: column;
+        }
+    }   
+
+
+    </style>
+</head>
+<body>
+
+    <div class="slider-container">
+        <div class="slider-wrapper">
+            <div class="slide active">
+                <img src="{% static 'images/cleaning1.jpg' %}" alt="Cleaning Service 1">
+            </div>
+            <div class="slide">
+                <img src="{% static 'images/cleaning2.jpg' %}" alt="Cleaning Service 2">
+            </div>
+            <div class="slide">
+                <img src="{% static 'images/cleaning3.jpg' %}" alt="Cleaning Service 3">
+            </div>
+        </div>
+    </div>  
+
+
+    

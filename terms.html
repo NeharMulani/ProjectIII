@@ -1,0 +1,423 @@
+{% extends "Base.html" %}
+
+{% block content %}
+<style>
+    .terms-container {
+        width: 100%;
+        margin: 0;
+        padding: 40px;
+        background-color: #f8f9fa;
+        border-radius: 0;
+        box-shadow: none;
+        box-sizing: border-box;
+    }
+    
+    .header-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+        border-bottom: 3px solid #007bff;
+        padding-bottom: 20px;
+    }
+    
+    .header-section h1 {
+        margin: 0;
+        color: #333;
+        font-size: 2.5em;
+    }
+    
+    .language-toggle {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+    
+    .toggle-btn {
+        padding: 10px 20px;
+        border: 2px solid #007bff;
+        background-color: white;
+        color: #007bff;
+        cursor: pointer;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: all 0.3s ease;
+    }
+    
+    .toggle-btn.active {
+        background-color: #007bff;
+        color: white;
+    }
+    
+    .toggle-btn:hover {
+        background-color: #0056b3;
+        color: white;
+        border-color: #0056b3;
+    }
+    
+    .content-section {
+        display: none;
+    }
+    
+    .content-section.active {
+        display: block;
+    }
+    
+    .section {
+        margin-bottom: 30px;
+        background-color: white;
+        padding: 20px;
+        border-left: 4px solid #007bff;
+        border-radius: 4px;
+    }
+    
+    .section h2 {
+        color: #007bff;
+        font-size: 1.5em;
+        margin-top: 0;
+        border-bottom: 2px solid #e9ecef;
+        padding-bottom: 10px;
+    }
+    
+    .section h3 {
+        color: #495057;
+        font-size: 1.1em;
+        margin-top: 15px;
+    }
+    
+    .section p {
+        line-height: 1.7;
+        color: #666;
+        margin: 10px 0;
+    }
+    
+    .section ul {
+        margin-left: 20px;
+        color: #666;
+        line-height: 1.8;
+    }
+    
+    .section li {
+        margin-bottom: 8px;
+    }
+    
+    .last-updated {
+        text-align: center;
+        color: #999;
+        font-size: 0.9em;
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px solid #ddd;
+    }
+</style>
+
+<div class="terms-container">
+    <div class="header-section">
+        <h1 id="pageTitle">Terms & Conditions</h1>
+        <div class="language-toggle">
+            <button class="toggle-btn active" id="englishBtn" onclick="toggleLanguage('english')">English</button>
+            <button class="toggle-btn" id="marathiBtn" onclick="toggleLanguage('marathi')">मराठी</button>
+        </div>
+    </div>
+
+    <!-- ENGLISH CONTENT -->
+    <div id="englishContent" class="content-section active">
+        <div class="section">
+            <h2>Terms & Conditions</h2>
+            <p>Welcome to our Service Platform. These Terms & Conditions ("T&C") govern your use of our website and services. By accessing and using this platform, you agree to be bound by these terms.</p>
+        </div>
+
+        <div class="section">
+            <h2>1. User Responsibilities</h2>
+            <h3>Account Creation</h3>
+            <ul>
+                <li>Users must provide accurate and complete information during registration</li>
+                <li>You are responsible for maintaining the confidentiality of your password</li>
+                <li>You agree not to share your account credentials with others</li>
+                <li>You must notify us immediately of any unauthorized account access</li>
+            </ul>
+            
+            <h3>User Conduct</h3>
+            <ul>
+                <li>You agree to use the platform only for lawful purposes</li>
+                <li>Harassment, abuse, or threatening behavior towards service providers is strictly prohibited</li>
+                <li>You shall not post false or misleading information about services</li>
+                <li>You must not violate any applicable laws or regulations</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>2. Service Booking & Payment</h2>
+            <h3>Booking Policy</h3>
+            <ul>
+                <li>All bookings are subject to availability of service providers</li>
+                <li>Cancellation must be done at least 24 hours before the scheduled service</li>
+                <li>Late cancellations may result in partial or full charges</li>
+                <li>We are not responsible for provider no-shows; refunds will be issued accordingly</li>
+            </ul>
+            
+            <h3>Payment Terms</h3>
+            <ul>
+                <li>Payment must be completed before or at the time of service</li>
+                <li>We accept multiple payment methods as displayed on the platform</li>
+                <li>All prices are displayed in Indian Rupees (INR)</li>
+                <li>Refunds, if applicable, will be processed within 5-7 business days</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>3. Service Provider Terms</h2>
+            <ul>
+                <li>Service providers must be verified and comply with our guidelines</li>
+                <li>Providers are responsible for their work quality and conduct</li>
+                <li>We do not employ service providers; they are independent contractors</li>
+                <li>Rating and review feedback must be honest and based on actual experience</li>
+                <li>Providers are insured and we recommend users to verify their credentials</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>4. Intellectual Property Rights</h2>
+            <ul>
+                <li>All content on this platform (text, images, logos, designs) is owned by us</li>
+                <li>You may not reproduce, distribute, or transmit any content without permission</li>
+                <li>User-generated content (reviews, feedback) remains your property but you grant us a license to use it</li>
+                <li>Unauthorized use of our intellectual property may result in legal action</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>5. Limitation of Liability</h2>
+            <ul>
+                <li>We are not liable for direct or indirect damages arising from service use</li>
+                <li>Our maximum liability is limited to the amount you paid for the service</li>
+                <li>We are not responsible for loss of data, profits, or business interruption</li>
+                <li>Service is provided "as-is" without warranties of any kind</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>6. Privacy & Data Protection</h2>
+            <ul>
+                <li>Your personal data will be handled as per our Privacy Policy</li>
+                <li>We use encryption to protect sensitive information</li>
+                <li>We do not share your data with third parties without consent</li>
+                <li>You have the right to request data deletion as per data protection laws</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>7. Dispute Resolution</h2>
+            <h3>Grievance Redressal</h3>
+            <ul>
+                <li>Any complaints must be filed within 7 days of the service</li>
+                <li>Contact our support team at <strong>support@platform.com</strong></li>
+                <li>We will investigate and resolve disputes within 15 days</li>
+                <li>If unresolved, disputes may be escalated to legal proceedings</li>
+            </ul>
+            
+            <h3>Jurisdiction</h3>
+            <p>These Terms & Conditions are governed by Indian law. Any legal disputes shall be subject to the exclusive jurisdiction of courts in India.</p>
+        </div>
+
+        <div class="section">
+            <h2>8. Prohibited Activities</h2>
+            <ul>
+                <li>Hacking, phishing, or attempting unauthorized platform access</li>
+                <li>Spam, scams, or fraudulent activities</li>
+                <li>Uploading malicious software or viruses</li>
+                <li>Impersonating other users or service providers</li>
+                <li>Engaging in illegal activities or promoting illegal content</li>
+                <li>Creating multiple fake accounts</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>9. Modifications & Termination</h2>
+            <ul>
+                <li>We reserve the right to modify these T&C at any time</li>
+                <li>Continued use after modifications constitutes acceptance</li>
+                <li>We may suspend or terminate accounts that violate these terms</li>
+                <li>Upon termination, all access to services will be immediately revoked</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>10. Contact Us</h2>
+            <p><strong>For any questions regarding these Terms & Conditions, please contact:</strong></p>
+            <ul>
+                <li><strong>Email:</strong> support@platform.com</li>
+                <li><strong>Phone:</strong> +91-XXXXXXXXXX</li>
+                <li><strong>Address:</strong> [Your Company Address]</li>
+            </ul>
+        </div>
+
+        <div class="last-updated">
+            <p>Last Updated: January 24, 2026</p>
+            <p>By using this platform, you acknowledge that you have read and agree to these Terms & Conditions.</p>
+        </div>
+    </div>
+
+    <!-- MARATHI CONTENT -->
+    <div id="marathiContent" class="content-section">
+        <div class="section">
+            <h2>अटी व शर्ती</h2>
+            <p>आমাদের सेवा प्लेटफॉर्मમध्ये स्वागत आहे. या अटी व शर्ती ("T&C") आपल्या वेबसाइट आणि सेवा वापराचे नियंत्रण करतात. या प्लेटफॉर्मला प्रवेश करून आणि वापर करून, आप या अटींशी सहमत आहात.</p>
+        </div>
+
+        <div class="section">
+            <h2>१. वापरकर्त्याची जबाबदारी</h2>
+            <h3>खाते निर्माण</h3>
+            <ul>
+                <li>वापरकर्त्यांनी नोंदणीच्या वेळी अचूक आणि संपूर्ण माहिती प्रदान केली पाहिजे</li>
+                <li>आप आपल्या पासवर्डच्या गोपनीयता राखण्यासाठी जबाबदार आहात</li>
+                <li>आप आपल्या खात्याचे क्रेडेंशियल्स इतरांशी सामायिक करू शकत नाही</li>
+                <li>आपल्याला त्वरित कोणतीही अनुमत खाते प्रवेशाचा सूचना दिला पाहिजे</li>
+            </ul>
+            
+            <h3>वापरकर्त्याचे आचरण</h3>
+            <ul>
+                <li>आप प्लेटफॉर्मचा वापर केवळ कायदेशीर उद्देशांसाठी करण्यास सहमत आहात</li>
+                <li>सेवा प्रदाताकडून छळ, अत्याचार किंवा धमकीचे वर्तन कठोरपणे प्रतिबंधित आहे</li>
+                <li>आप सेवा संबंधित खोटी किंवा दिशाभूलकारक माहिती पोस्ट करू शकत नाही</li>
+                <li>आप कोणतेही लागू कायदे किंवा नियमांचे उल्लंघन करू शकत नाही</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>२. सेवा बुकिंग आणि भुगतान</h2>
+            <h3>बुकिंग धोरण</h3>
+            <ul>
+                <li>सर्व बुकिंग सेवा प्रदाताची उपलब्धतेच्या अधीन आहेत</li>
+                <li>निर्धारित सेवेपूर्वी किमान २४ तास आगे रद्द करणे आवश्यक आहे</li>
+                <li>उशीरा रद्दीकरणामुळे आंशिक किंवा पूर्ण शुल्क हो शकते</li>
+                <li>आम्ही प्रदातेची अनुपस्थितीसाठी जबाबदार नाही; परिणामानुसार रिफंड दिले जातील</li>
+            </ul>
+            
+            <h3>भुगतान अटी</h3>
+            <ul>
+                <li>सेवेपूर्वी किंवा सेवाच्या वेळी भुगतान पूर्ण करणे आवश्यक आहे</li>
+                <li>आम्ही प्लेटफॉर्मवर प्रदर्शित अनेक भुगतान पद्धती स्वीकारतो</li>
+                <li>सर्व किंमती भारतीय रुपये (INR) मध्ये प्रदर्शित आहेत</li>
+                <li>रिफंड, लागू असल्यास, ५-७ कार्य दिवसांमध्ये प्रक्रिया केली जातील</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>३. सेवा प्रदाता अटी</h2>
+            <ul>
+                <li>सेवा प्रदाता सत्यापित असणे आवश्यक आणि आमच्या मार्गदर्शनचे पालन करणे आवश्यक आहे</li>
+                <li>प्रदाता त्यांच्या काम गुणवत्ता आणि वर्तनासाठी जबाबदार आहेत</li>
+                <li>आम्ही सेवा प्रदाताला नियुक्त करत नाही; ते स्वतंत्र ठेकेदार आहेत</li>
+                <li>रेटिंग आणि समीक्षा प्रतिक्रिया प्रामाणिक आणि वास्तविक अनुभवावर आधारित असणे आवश्यक आहे</li>
+                <li>प्रदाता विमाकृत आहेत आणि आम्ही वापरकर्त्यांना त्यांची क्रेडेंशियल्स तपासणे सुचवतो</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>४. बौद्धिक संपत्ती अधिकार</h2>
+            <ul>
+                <li>या प्लेटफॉर्मवरील सर्व सामग्री (मजकूर, प्रतिमा, लोगो, डिজाइन) आमच्या मालकीचे आहे</li>
+                <li>अनुमती शिवाय आप कोणतीही सामग्री पुनरुत्पादित, वितरित किंवा प्रसारित करू शकत नाही</li>
+                <li>वापरकर्त्या-निर्मित सामग्री (समीक्षा, प्रतिक्रिया) आपली मालकी राहते परंतु आप आमला त्याचा वापर करण्याचा लाइसेन्स देतो</li>
+                <li>आमच्या बौद्धिक संपत्तीचा अनुमतीहीन वापर कायदेशीर कारवाई होऊ शकतो</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>५. दायित्वाची मर्यादा</h2>
+            <ul>
+                <li>सेवा वापरामुळे होणार्‍या थेट किंवा अप्रत्यक्ष नुकसानीसाठी आम्ही जबाबदार नाही</li>
+                <li>आमची कमाल दायित्व आपण सेवाचे केलेल्या रकमेपर्यंत मर्यादित आहे</li>
+                <li>आम्ही डेटा, नफा किंवा व्यावसायिक व्यत्यय नुकसानीसाठी जबाबदार नाही</li>
+                <li>सेवा "जसे आहे" आधारावर प्रदान केली जाते कोणतेही वारंटी शिवाय</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>६. गोपनीयता आणि डेटा संरक्षण</h2>
+            <ul>
+                <li>आपल्या वैयक्तिक डेटा आमच्या गोपनीयता धोरणानुसार हाताळले जातील</li>
+                <li>संवेदनशील माहिती संरक्षित करण्यासाठी आम्ही एन्क्रिप्शन वापरतो</li>
+                <li>आप सहमती शिवाय आमी आपला डेटा तृतीय पक्षांशी सामायिक करत नाही</li>
+                <li>डेटा संरक्षण कायद्यानुसार आपल्याला डेटा हटवण्याची मागणी करण्याचा अधिकार आहे</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>७. विवाद समाधान</h2>
+            <h3>तक्रार निवारण</h3>
+            <ul>
+                <li>कोणतीही तक्रार सेवेच्या ७ दिवसांमध्ये दाखल केली पाहिजे</li>
+                <li>आमच्या समर्थन टीमला <strong>support@platform.com</strong> वर संपर्क करा</li>
+                <li>आम्ही १५ दिवसांमध्ये विवादांची तपासणी आणि समाधान करू</li>
+                <li>अनुत्तरित राहिल्यास, विवाद कायदेशीर कार्यवाहीला वाढवली जाऊ शकते</li>
+            </ul>
+            
+            <h3>अधिक्षेत्र</h3>
+            <p>या अटी व शर्ती भारतीय कायद्याने नियंत्रित आहेत. कोणतीही कायदेशीर विवादे भारतातील न्यायालयांच्या विशेषाधिकृत अधिक्षेत्रच्या अधीन असतील.</p>
+        </div>
+
+        <div class="section">
+            <h2>८. प्रतिबंधित क्रियाकलाप</h2>
+            <ul>
+                <li>हॅकिंग, फिशिंग, किंवा अनुमतीहीन प्लेटफॉर्म प्रवेशाचा प्रयत्न</li>
+                <li>स्पॅम, घोटाळे, किंवा धोकादायक क्रियाकलाप</li>
+                <li>घातक सॉफ्टवेअर किंवा व्हायरस अपलोड करणे</li>
+                <li>इतर वापरकर्त्यांचे किंवा सेवा प्रदाताचे प्रतिरूप करणे</li>
+                <li>अवैध क्रियाकलापात गुंतणे किंवा अवैध सामग्री प्रचार करणे</li>
+                <li>एकाधिक बनावट खाते तयार करणे</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>९. संशोधन आणि समाप्ती</h2>
+            <ul>
+                <li>आम्ही कोणत्याही वेळी या T&C संशोधित करण्याचा अधिकार राखतो</li>
+                <li>संशोधनानंतर सातत्य वापर स्वीकृती घटक आहे</li>
+                <li>आम्ही या अटींचे उल्लंघन करणार्‍या खातांना निलंबित किंवा समाप्त करू शकतो</li>
+                <li>समाप्तीवर, सर्व सेवा प्रवेश तत्काळ रद्द केला जातील</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>१०. आमच्याशी संपर्क करा</h2>
+            <p><strong>या अटी व शर्तींबद्दल कोणतेही प्रश्न असल्यास, कृपया संपर्क करा:</strong></p>
+            <ul>
+                <li><strong>ईमेल:</strong> support@platform.com</li>
+                <li><strong>फोन:</strong> +91-XXXXXXXXXX</li>
+                <li><strong>पता:</strong> [आपल्या कंपनीचा पता]</li>
+            </ul>
+        </div>
+
+        <div class="last-updated">
+            <p>अंतिम अद्यतन: २४ जानेवारी २०२६</p>
+            <p>या प्लेटफॉर्मचा वापर करून, आप स्वीकारतो की आपण या अटी व शर्ती वाचल्या आहेत आणि सहमत आहात.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleLanguage(language) {
+        // Hide both sections
+        document.getElementById('englishContent').classList.remove('active');
+        document.getElementById('marathiContent').classList.remove('active');
+        
+        // Remove active class from buttons
+        document.getElementById('englishBtn').classList.remove('active');
+        document.getElementById('marathiBtn').classList.remove('active');
+        
+        // Show selected language
+        if (language === 'english') {
+            document.getElementById('englishContent').classList.add('active');
+            document.getElementById('englishBtn').classList.add('active');
+            document.getElementById('pageTitle').textContent = 'Terms & Conditions';
+        } else if (language === 'marathi') {
+            document.getElementById('marathiContent').classList.add('active');
+            document.getElementById('marathiBtn').classList.add('active');
+            document.getElementById('pageTitle').textContent = 'अटी व शर्ती';
+        }
+    }
+</script>
+
+{% endblock %}

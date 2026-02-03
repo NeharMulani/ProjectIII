@@ -1,0 +1,138 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home Services - Help Yourself</title>
+  <link rel="stylesheet" href="{% static 'style2.css' %}">
+</head>
+<body>
+
+<header class="main-header">
+  <h1>Help Yourself</h1>
+  <p>Your one-stop platform for all home-based human services</p>
+</header>
+
+<!-- Domestic Help -->
+<section class="services-section">
+  <h2 id="domestic-help" tabindex="-1">Domestic Help</h2>
+  <div class="service-grid">
+
+    <a href="{% url 'house_clean_type_select' %}" class="service-card">
+      <img src="{% static 'bhandi2.jpg' %}" alt="House Cleaning">
+      <div class="service-card-box">
+        House Cleaning <br><span>घराची स्वच्छता</span>
+      </div>
+    </a>
+
+    <a href="{% url 'maid_type_select' %}" class="service-card">
+      <img src="{% static 'maid.jpg' %}" alt="Maid Services">
+      <div class="service-card-box">
+        Maid Services <br><span>घरकाम</span>
+      </div>
+    </a>
+
+    <a href="{% url 'cook_type_select' %}" class="service-card">
+      <img src="{% static 'cook.jpg' %}" alt="Cook">
+      <div class="service-card-box">
+        Cook / Chef <br><span>स्वयंपाकी</span>
+      </div>
+    </a>
+
+    <a href="{% url 'driver_type_select' %}" class="service-card">
+      <img src="{% static 'driver.jpg' %}" alt="Driver">
+      <div class="service-card-box">
+        Driver on Demand <br><span>ड्रायव्हर</span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- Repairs & Maintenance -->
+<section class="services-section">
+  <h2 id="maintainance" tabindex="-1">Repairs & Maintenance</h2>
+  <div class="service-grid">
+
+    <a href="{% url 'electrician_type_select' %}" class="service-card">
+      <img src="{% static 'electrician.jpg' %}">
+      <div class="service-card-box">Electrician <br><span>इलेक्ट्रिशियन</span></div>
+    </a>
+
+    <a href="{% url 'plumber_type_select' %}" class="service-card">
+      <img src="{% static 'plumber.jpg' %}">
+      <div class="service-card-box">Plumber <br><span>प्लंबर</span></div>
+    </a>
+
+    <div class="service-card">
+      <img src="{% static 'tv.jpg' %}">
+      <div class="service-card-box">TV Repair <br><span>टीव्ही रिपेअर</span></div>
+    </div>
+
+    <div class="service-card">
+      <img src="{% static 'paint.jpeg' %}">
+      <div class="service-card-box">Painter <br><span>पेंटर</span></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Personal Services -->
+<section class="services-section">
+  <h2 id="personal-services" tabindex="-1">Personal Services</h2>
+  <div class="service-grid">
+
+    <div class="service-card">
+      <img src="{% static 'yoga.png' %}">
+      <div class="service-card-box">Yoga Instructor <br><span>योगा</span></div>
+    </div>
+
+    <div class="service-card">
+      <img src="{% static 'fitness.jpg' %}">
+      <div class="service-card-box">Fitness Trainer <br><span>फिटनेस ट्रेनर</span></div>
+    </div>
+
+    <a href="{% url 'beautician_type_select' %}" class="service-card">
+      <img src="{% static 'bp.jpg' %}">
+      <div class="service-card-box">Beautician <br><span>ब्युटी पार्लर</span></div>
+    </a>
+
+    <div class="service-card">
+      <img src="{% static 'counceller2.jpg' %}">
+      <div class="service-card-box">Counceller <br><span>सल्लागार</span></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Outdoor -->
+<section class="services-section">
+  <h2 id="outdoor" tabindex="-1">Outdoor & Seasonal</h2>
+  <div class="service-grid">
+
+    <div class="service-card">
+      <img src="{% static 'gardening.jpg' %}">
+      <div class="service-card-box">Gardening <br><span>बागकाम</span></div>
+    </div>
+
+    <div class="service-card">
+      <img src="{% static 'carwash.jpg' %}">
+      <div class="service-card-box">Car Wash <br><span>गाडी धुणे</span></div>
+    </div>
+
+    <div class="service-card">
+      <img src="{% static 'pest.jpg' %}">
+      <div class="service-card-box">Pest Control <br><span>कीटक नियंत्रण</span></div>
+    </div>
+
+    <div class="service-card">
+      <img src="{% static 'window2.jpeg' %}">
+      <div class="service-card-box">Window Cleaning <br><span>काच साफ करणे</span></div>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>

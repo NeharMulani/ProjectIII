@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Home</title>
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:Arial, sans-serif;
+    background:linear-gradient(135deg, #1e3c72, #2a5298);
+}
+
+.card{
+    width:400px;
+    background:rgba(255,255,255,0.12);
+    backdrop-filter:blur(12px);
+    padding:30px;
+    border-radius:16px;
+    text-align:center;
+    color:white;
+    box-shadow:0 15px 35px rgba(0,0,0,0.35);
+    position:relative;
+}
+
+/* Profile Icon */
+.profile{
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    background:linear-gradient(45deg,#36d1dc,#5b86e5);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:40px;
+    margin:-70px auto 10px;
+    border:4px solid rgba(255,255,255,0.4);
+}
+
+h2{
+    margin:10px 0;
+}
+
+.info{
+    background:rgba(255,255,255,0.18);
+    padding:12px;
+    border-radius:10px;
+    margin:10px 0;
+    font-size:15px;
+}
+
+/* Buttons */
+.buttons{
+    margin-top:20px;
+    display:flex;
+    justify-content:space-between;
+}
+
+button{
+    width:48%;
+    padding:12px;
+    border:none;
+    border-radius:25px;
+    font-size:14px;
+    color:white;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.login{
+    background:linear-gradient(45deg, #36d1dc, #5b86e5);
+}
+
+.logout{
+    background:linear-gradient(45deg, #ff512f, #dd2476);
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+/* Language Toggle */
+.lang-toggle{
+    position:absolute;
+    top:15px;
+    right:15px;
+}
+
+.lang-toggle button{
+    width:auto;
+    padding:6px 12px;
+    font-size:12px;
+    border-radius:15px;
+    background:rgba(0,0,0,0.3);
+}
+.footer{
+    margin-top:15px;
+    font-size:12px;
+    opacity:0.8;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <!-- Language Toggle -->
+    <div class="lang-toggle">
+        <button onclick="toggleLang()">मराठी</button>
+    </div>
+
+    <!-- Profile Icon -->
+    <div class="profile">👤</div>
+
+    <!-- English Content -->
+    <div id="en">
+        <h2>Welcome 🎉</h2>
+
+        <div class="info">
+            <b>Mobile:</b> {{ mobile }}
+        </div>
+
+        <div class="info">
+            <b>Login Time:</b><br>
+            {{ login_time }}
+        </div>
+
+        <div class="info">
+            <b>Your Information:</b><br>
+
+            {% if data %}
+                {% for d in data %}
+                    Name: {{ d.name }} <br>
+                    Phone: {{ d.phone }} <br>
+                    Address: {{ d.address }} <br>
+                    <hr>
+                {% endfor %}
+            {% else %}
+                No information found.
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Marathi Content -->
+    <div id="mr" style="display:none">
+        <h2>स्वागत आहे 🎉</h2>
+
+        <div class="info">
+            <b>मोबाईल नंबर:</b> {{ mobile }}
+        </div>
+
+        <div class="info">
+            <b>लॉगिन वेळ:</b><br>
+            {{ login_time }}
+        </div>
+
+        <div class="info">
+            <b>तुमची माहिती:</b><br>
+
+            {% if data %}
+                {% for d in data %}
+                    नाव: {{ d.name }} <br>
+                    मोबाईल: {{ d.phone }} <br>
+                    पत्ता: {{ d.address }} <br>
+                    <hr>
+                {% endfor %}
+            {% else %}
+                कोणतीही माहिती सापडली नाही.
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="buttons">
+       
+        <form action="/logout/" method="get">
+            <button class="logout" id="logoutBtn">Logout</button>
+        </form>
+    </div>
+
+    <div class="footer">
+        Secure OTP Login System
+    </div>
+
+</div>
+
+<script>
+let marathi = false;
+
+function toggleLang(){
+    marathi = !marathi;
+    document.getElementById("en").style.display = marathi ? "none" : "block";
+    document.getElementById("mr").style.display = marathi ? "block" : "none";
+    event.target.innerText = marathi ? "English" : "मराठी";
+}
+</script>
+
+</body>
+</html>

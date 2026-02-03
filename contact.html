@@ -1,0 +1,344 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Contact Us - Help Yourself{% endblock %}
+
+{% block content %}
+
+<section>
+    <!-- Toggle Language Button -->
+    <div class="language-toggle">
+      <button id="toggleLanguageBtn" onclick="toggleLanguage()">मराठी</button>
+    </div>
+
+    <h1 id="contact-title">Contact Us</h1>
+
+    <div class="container">
+        <!-- Contact Form -->
+        <div class="form-container">
+            <form id="contactForm" action="#" method="POST" novalidate>
+                {% csrf_token %}
+
+                <div class="form-grid">
+                    <div class="field">
+                        <label for="name" id="label-name">Full Name <span class="required-star">*</span></label>
+                        <input type="text" id="name" name="name" placeholder="Your full name" required aria-required="true" />
+                        <small class="error" id="err-name" aria-live="polite"></small>
+                    </div>
+
+                    <div class="field">
+                        <label for="email" id="label-email">Email <span class="required-star">*</span></label>
+                        <input type="email" id="email" name="email" placeholder="you@example.com" required aria-required="true" />
+                        <small class="error" id="err-email" aria-live="polite"></small>
+                    </div>
+
+                    <div class="field">
+                        <label for="phone" id="label-phone">Phone <span class="required-star">*</span></label>
+                        <input type="tel" id="phone" name="phone" placeholder="10-digit mobile" pattern="\d{10}" title="Enter a 10 digit phone number" required aria-required="true" />
+                        <small class="error" id="err-phone" aria-live="polite"></small>
+                    </div>
+
+                    <div class="field">
+                        <label for="subject" id="label-subject">Subject <span class="required-star">*</span></label>
+                        <input type="text" id="subject" name="subject" placeholder="Short summary" maxlength="100" required aria-required="true" />
+                        <small class="error" id="err-subject" aria-live="polite"></small>
+                    </div>
+                </div>
+
+                <div class="field full-width">
+                    <label for="message" id="label-message">Message <span class="required-star">*</span></label>
+                    <textarea id="message" name="message" rows="6" placeholder="Tell us more" required aria-required="true"></textarea>
+                    <small class="error" id="err-message" aria-live="polite"></small>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" id="submit-btn">Send Message</button>
+                    <div id="form-success" class="form-success" role="status" aria-live="polite" hidden>Thank you — your message has been sent.</div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="info-container">
+            <h2 style="color:#1e40af;" id="get-in-touch-title">Get in Touch</h2>
+            <p id="intro-text">Looking to hire, partner, or ask a question? We’re here to help.</p>
+            <p><strong id="phone-label">Phone:</strong> <a href="tel:+919665944274">+91 9665944274</a></p>
+            <p><strong id="email-label">Email:</strong> <a href="mailto:helpyourself@gmail.com">helpyourself@gmail.com</a></p>
+            <p><strong id="address-label">Address:</strong><br/>Velapur, Maharashtra<br/>India</p>
+
+            <!-- Map or Offline Message -->
+            <div class="map-container" id="mapArea"></div>
+        </div>
+    </div>
+</section>
+
+<!-- Internal CSS specific to contact page -->
+<style>
+/* Contact Page Styles */
+section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.form-container, .info-container {
+    background: #fff;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    flex: 1;
+    min-width: 300px;
+}
+
+/* Form layout */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 12px;
+}
+
+.field { display: flex; flex-direction: column; }
+
+label {
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #0f172a;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+}
+
+.required-star { color: #ef4444; font-weight: 800; }
+
+input, textarea {
+    width: 100%;
+    padding: 12px 14px;
+    margin: 0;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 0.98rem;
+    background: linear-gradient(180deg, #ffffff, #fbfdff);
+    box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+    transition: border-color .15s ease, box-shadow .15s ease;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: #60a5fa;
+    box-shadow: 0 6px 18px rgba(96,165,250,0.12);
+}
+
+.full-width { margin-top: 16px; }
+
+.error { color: #dc2626; font-size: 0.85rem; min-height: 1.1em; margin-top: 6px; }
+
+.form-actions { display:flex; gap:16px; align-items:center; margin-top:18px; }
+
+button {
+    background: linear-gradient(90deg,#2563eb,#1e40af);
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(30,64,175,0.18);
+}
+
+button:hover { transform: translateY(-1px); }
+
+.form-success {
+    color: #065f46;
+    background: #ecfdf5;
+    border: 1px solid #bbf7d0;
+    padding: 10px 14px;
+    border-radius: 10px;
+}
+
+.map-container {
+    width: 100%;
+    height: 250px;
+    border-radius: 10px;
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.map-placeholder {
+    width: 100%;
+    height: 100%;
+    background-color: #cbd5e1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #334155;
+    font-style: italic;
+    font-size: 1rem;
+}
+
+.language-toggle {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+#toggleLanguageBtn {
+    padding: 10px 16px;
+    font-size: 1em;
+    background-color: white;
+    color: #1e69de;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    transition: background 0.3s ease;
+}
+
+#toggleLanguageBtn:hover { background-color: #1e40af; color: #ffffff; }
+
+@media (max-width: 768px) {
+    .container { flex-direction: column; }
+    .form-grid { grid-template-columns: 1fr; }
+}
+</style>
+
+<!-- Contact Page JS -->
+<script>
+const translations = {
+  en: {
+    contactTitle: "Contact Us",
+    labelName: "Full Name",
+    labelEmail: "Email",
+    labelPhone: "Phone",
+    labelSubject: "Subject",
+    labelMessage: "Message",
+    submitBtn: "Send Message",
+    getInTouchTitle: "Get in Touch",
+    introText: "Looking to hire, partner, or ask a question? We’re here to help.",
+    phoneLabel: "Phone:",
+    emailLabel: "Email:",
+    addressLabel: "Address:",
+    successMessage: "Thank you — your message has been sent."
+  },
+  mr: {
+    contactTitle: "आमच्याशी संपर्क साधा",
+    labelName: "पूर्ण नाव",
+    labelEmail: "ईमेल",
+    labelPhone: "फोन",
+    labelSubject: "विषय",
+    labelMessage: "संदेश",
+    submitBtn: "संदेश पाठवा",
+    getInTouchTitle: "संपर्क करा",
+    introText: "नोकरीसाठी, भागीदारीसाठी किंवा प्रश्न विचारण्यासाठी संपर्क साधा.",
+    phoneLabel: "फोन:",
+    emailLabel: "ईमेल:",
+    addressLabel: "पत्ता:",
+    successMessage: "धन्यवाद — तुमचा संदेश पाठविण्यात आला आहे."
+  }
+};
+
+let currentLang = 'en';
+
+function toggleLanguage() {
+  currentLang = currentLang === 'en' ? 'mr' : 'en';
+  setLanguage(currentLang);
+  document.getElementById('toggleLanguageBtn').textContent = currentLang === 'en' ? 'मराठी' : 'English';
+}
+
+function setLanguage(lang) {
+  const t = translations[lang];
+  document.getElementById('contact-title').textContent = t.contactTitle;
+  document.getElementById('label-name').childNodes[0].nodeValue = t.labelName + ' ';
+  document.getElementById('label-email').childNodes[0].nodeValue = t.labelEmail + ' ';
+  document.getElementById('label-phone').childNodes[0].nodeValue = t.labelPhone + ' ';
+  document.getElementById('label-subject').childNodes[0].nodeValue = t.labelSubject + ' ';
+  document.getElementById('label-message').childNodes[0].nodeValue = t.labelMessage + ' ';
+  document.getElementById('submit-btn').textContent = t.submitBtn;
+  document.getElementById('get-in-touch-title').textContent = t.getInTouchTitle;
+  document.getElementById('intro-text').textContent = t.introText;
+  document.getElementById('phone-label').textContent = t.phoneLabel;
+  document.getElementById('email-label').textContent = t.emailLabel;
+  document.getElementById('address-label').textContent = t.addressLabel;
+  document.getElementById('form-success').textContent = t.successMessage;
+
+  // placeholders (optional)
+  document.getElementById('name').placeholder = (lang === 'en') ? 'Your full name' : 'तुमचे पूर्ण नाव';
+  document.getElementById('email').placeholder = (lang === 'en') ? 'you@example.com' : 'तुमचा ईमेल';
+  document.getElementById('phone').placeholder = (lang === 'en') ? '10-digit mobile' : '10 अंकी मोबाईल';
+  document.getElementById('subject').placeholder = (lang === 'en') ? 'Short summary' : 'लघु सारांश';
+  document.getElementById('message').placeholder = (lang === 'en') ? 'Tell us more' : 'अधिक माहिती द्या';
+}
+
+function loadMapOrMessage() {
+  const mapArea = document.getElementById('mapArea');
+  if (navigator.onLine) {
+    mapArea.innerHTML = `
+      <iframe 
+        src="https://www.google.com/maps?q=Velapur,+Maharashtra,+India&output=embed" 
+        allowfullscreen="" 
+        loading="lazy">
+      </iframe>`;
+  } else {
+    mapArea.innerHTML = `
+      <div class="map-placeholder">
+        Map not available. Please check your internet connection.
+      </div>`;
+  }
+}
+
+// Form validation & submit handling
+function showError(id, message) {
+  document.getElementById(id).textContent = message || '';
+}
+
+function clearErrors() {
+  ['err-name','err-email','err-phone','err-subject','err-message'].forEach(id => showError(id, ''));
+}
+
+document.getElementById('contactForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  clearErrors();
+  const form = e.target;
+  const name = form.name, email = form.email, phone = form.phone, subject = form.subject, message = form.message;
+  let valid = true;
+
+  if (!name.checkValidity()) { showError('err-name', name.validationMessage); valid = false; }
+  if (!email.checkValidity()) { showError('err-email', email.validationMessage); valid = false; }
+  if (!phone.checkValidity()) { showError('err-phone', phone.validationMessage || 'Enter 10 digit phone'); valid = false; }
+  if (!subject.checkValidity()) { showError('err-subject', subject.validationMessage); valid = false; }
+  if (!message.checkValidity()) { showError('err-message', message.validationMessage); valid = false; }
+
+  if (!valid) {
+    // focus first invalid
+    const firstInvalid = form.querySelector(':invalid');
+    if (firstInvalid) firstInvalid.focus();
+    return;
+  }
+
+  // Simulate successful submit (replace with real submit action)
+  document.getElementById('form-success').hidden = false;
+  form.reset();
+  setTimeout(()=> document.getElementById('form-success').hidden = true, 5000);
+});
+
+// Initial setup
+loadMapOrMessage();
+setLanguage(currentLang);
+
+window.addEventListener('online', loadMapOrMessage);
+window.addEventListener('offline', loadMapOrMessage);
+</script>
+
+{% endblock %}
